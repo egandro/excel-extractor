@@ -34,6 +34,16 @@ class ModuleExtractor:
 
         with open(dummy_file_path, 'w', newline='') as f:
             writer = csv.writer(f)
+            # https://github.com/python/cpython/blob/main/Lib/csv.py
+            # writer = csv.writer(
+            #     f,
+            #     delimiter=",",        # field separator: common are ',', ';', '\t', '|'
+            #     quotechar='"',        # character used to quote fields containing special chars
+            #     quoting=csv.QUOTE_MINIMAL,  # controls when quoting occurs
+            #     escapechar="\\",      # used to escape delimiter or quotechar if quoting=QUOTE_NONE
+            #     doublequote=True,     # if True, quotechar is doubled inside fields instead of escaped
+            #     lineterminator="\n"   # line separator, usually '\n' or '\r\n'
+            # )
             writer.writerow(headers)
             writer.writerows(rows)
 
