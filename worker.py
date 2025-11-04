@@ -118,6 +118,8 @@ class Worker:
                     last_range_row_count = row_count
                 else:
                     if last_range_row_count != row_count:
+                        print("last_range_row_count", last_range_row_count)
+                        print("row_count", row_count)
                         raise ValueError(f"Data {idx}: Data rows count differs to Data {last_range_idx}")
                 data_blocks.append({
                     "type": "range",
@@ -157,6 +159,7 @@ class Worker:
                 elif "range" in entry["type"]:
                     min_r = entry["min_r"]
                     min_c = entry["min_c"]
+                    col_count = entry["col_count"]
 
                     for col in range(col_count):
                         src_c = min_c + col - 1
