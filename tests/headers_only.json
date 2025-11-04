@@ -1,0 +1,9 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "headers": [
+        {
+            "range": "A1:K1"
+        }
+    ]
+}

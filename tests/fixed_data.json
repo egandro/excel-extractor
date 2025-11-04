@@ -1,0 +1,20 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "headers": [
+        {
+            "fixed": "C1:C1"
+        },
+        {
+            "fixed": "M1:M1"
+        }
+    ],
+    "data": [
+        {
+            "fixed": "D15:D15"
+        },
+        {
+            "fixed": "J10:J10"
+        }
+    ]
+}

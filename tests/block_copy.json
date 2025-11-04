@@ -1,0 +1,14 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "headers": [
+        {
+            "range": "E1:J1"
+        }
+    ],
+    "data": [
+        {
+            "range": "E7:J20"
+        }
+    ]
+}

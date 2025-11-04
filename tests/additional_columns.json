@@ -1,0 +1,38 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "headers": [
+        {
+            "static": "Year"
+        },
+        {
+            "range": "A1:C1"
+        },
+        {
+            "static": "Middle"
+        },
+        {
+            "range": "E1:H1"
+        },
+        {
+            "static": "End"
+        }
+    ],
+    "data": [
+        {
+            "static": "2005"
+        },
+        {
+            "static": "2005"
+        },
+        {
+            "fixed": "C1:C1"
+        },
+        {
+            "range": "H14:M19"
+        },
+        {
+            "static": "2005"
+        }
+    ]
+}

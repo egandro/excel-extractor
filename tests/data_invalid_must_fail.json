@@ -1,0 +1,14 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "headers": [
+        {
+            "static": "bar"
+        }
+    ],
+    "data": [
+        {
+            "foo": "bar"
+        }
+    ]
+}

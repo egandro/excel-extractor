@@ -1,0 +1,14 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "headers": [
+        {
+            "static": "Year"
+        }
+    ],
+    "data": [
+        {
+            "static": "2005"
+        }
+    ]
+}

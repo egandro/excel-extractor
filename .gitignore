@@ -1,0 +1,8 @@
+# Ignore generated CSVs
+/tests/results/
+
+/tests/pattern.xlsx
+
+# Python cache
+__pycache__/
+*.pyc
