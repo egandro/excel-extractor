@@ -1,0 +1,15 @@
+{
+    "source": "tests/pattern.xlsx",
+    "sheet": "Sheet1",
+    "na": "na",
+    "headers": [
+        {
+            "range": "P1:R1"
+        }
+    ],
+    "data": [
+        {
+            "range": "P2:R20"
+        }
+    ]
+}

@@ -20,6 +20,7 @@ Create a Json config file e.g. `config.json`.
 {
   "source": "tests/pattern.xlsx",
   "sheet": "Sheet1",
+  "na": "na",
   "headers": [
     { "static": "Year" },
     { "range": "A1:C1" },
@@ -39,6 +40,7 @@ Create a Json config file e.g. `config.json`.
 
 **source**: mandatory source file
 **sheet**: mandatory sheet name in the excel file
+**na**: optional string that will be used to replace `na` values. Default is an empty string.
 **headers**: mandatory header section
   - **static**: a static text
   - **fixed**: content of a single cell in the excel file

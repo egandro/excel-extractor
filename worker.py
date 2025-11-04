@@ -13,6 +13,7 @@ class Worker:
         self.header_blocks = []
         self.rows = []
         self.final_header = []
+        self.na = cfg.get("na", "")
 
         required = {
             "source": self.src,
@@ -104,7 +105,7 @@ class Worker:
                 if min_c != max_c or min_r != max_r:
                     raise ValueError(f"Data fixed '{sel}' must be single cell")
                 cell = self.sheet.iat[min_r - 1, min_c - 1]
-                data_blocks.append({"type": "fixed", "value": str(cell) if pd.notna(cell) else ""})
+                data_blocks.append({"type": "fixed", "value": str(cell) if pd.notna(cell) else self.na})
                 data_rows += 1
                 data_columns += 1
             elif "range" in entry:
@@ -132,7 +133,6 @@ class Worker:
 
         if data_rows_range == 0:
             row = [b["value"] for b in data_blocks]
-            #print("ROWS", row)
             if len(row) > 0:
                 self.rows = [row]
             return
@@ -142,14 +142,12 @@ class Worker:
             if header_cols != data_columns:
                 raise ValueError(f"Header / Data Column missmatch {header_cols} vs {data_columns}")
 
-        #print("data_columns", data_columns)
-
         rows = []
         values = self.sheet.values
 
         for row_offset in range(row_count):
             row = []
-            for idx, entry in enumerate(data_blocks, start=1):
+            for idx, entry in enumerate(data_blocks):
                 if "static" in entry["type"]:
                     value = entry["value"]
                     row.append(value)
@@ -157,19 +155,15 @@ class Worker:
                     value = entry["value"]
                     row.append(value)
                 elif "range" in entry["type"]:
-                    col_offset = entry["col_offset"]
-                    #print("row_offset", row_offset, "col_offset", col_offset)
-
                     min_r = entry["min_r"]
                     min_c = entry["min_c"]
 
-                    for col in range(min_c + col_count):
-                        src_c = col - 1
-                        src_r = min_r + row_offset
+                    for col in range(col_count):
+                        src_c = min_c + col - 1
+                        src_r = min_r + row_offset - 1
                         cell = values[src_r, src_c]
-                        row.append(str(cell) if pd.notna(cell) else "X")
+                        row.append(str(cell) if pd.notna(cell) else self.na)
 
-                    #print("row", row)
             rows.append(row)
         self.rows = rows
 
@@ -191,10 +185,6 @@ class Worker:
         self._build_header_blocks()
         self._build_final_header()
         self._extract_data_rows()
-
-        # print("header_blocks:\n", self.header_blocks)
-        # print("final_header:\n", self.final_header)
-        # print("rows:\n", self.rows)
 
         headers = self.final_header
         rows = self.rows
