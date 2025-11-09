@@ -6,7 +6,6 @@ The purpose of this software is to create csv files in order to save copy/pasts 
 
 Similar project: <https://pypi.org/project/excelextract/> This wasn't fexible enough for our needs.
 
-
 ## Usage
 
 You need an excel file.

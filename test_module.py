@@ -2,7 +2,7 @@ import os
 import sys
 import unittest
 import filecmp
-from module_extractor import ModuleExtractor
+from excel_extractor import ExcelExtractor
 
 class TestModuleExtractor(unittest.TestCase):
     TEST_DIR = "tests"
@@ -32,7 +32,7 @@ class TestModuleExtractor(unittest.TestCase):
 
                 generated_file = os.path.join(self.OUTPUT_DIR, f"{base_name}.txt")
                 try:
-                    extractor = ModuleExtractor(json_path, self.OUTPUT_DIR)
+                    extractor = ExcelExtractor(json_path, self.OUTPUT_DIR)
                     extractor.run()
                 except Exception as e:
                     with open(generated_file, "w") as f:
@@ -43,7 +43,7 @@ class TestModuleExtractor(unittest.TestCase):
             else:
                 expected_file = os.path.join(self.EXPECTED_DIR, f"{base_name}.csv")
                 generated_file = os.path.join(self.OUTPUT_DIR, f"{base_name}.csv")
-                extractor = ModuleExtractor(json_path, self.OUTPUT_DIR)
+                extractor = ExcelExtractor(json_path, self.OUTPUT_DIR)
                 extractor.run()
                 self.assertTrue(os.path.isfile(generated_file), f"{generated_file} not created")
                 self.assertTrue(os.path.isfile(expected_file), f"{expected_file} missing")
