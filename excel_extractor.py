@@ -226,7 +226,7 @@ class ExcelExtractor:
         worker = Worker(config)
         headers, rows = worker.extract()
 
-        with open(dummy_file_path, 'w', newline='') as f:
+        with open(dummy_file_path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             # https://github.com/python/cpython/blob/main/Lib/csv.py
             # writer = csv.writer(
